@@ -14,7 +14,11 @@ module.exports ={
 
     },
     plugins: [],      //插件
+    //服务
     devServer: {
-
+        contentBase:path.resolve(__dirname,'dist'),
+        host:'192.168.1.133',
+        compress:true,    //服务器压缩
+        port:1717
     }
 }
