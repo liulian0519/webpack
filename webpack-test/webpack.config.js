@@ -60,6 +60,21 @@ module.exports = {
                     // publicPath:'../' //解决css背景图的路径问题
                 })
 
+            },
+            {
+                //sass
+                test:/\.scss/,
+                use:ExtractTextPlugin.extract({
+                    fallback: 'style-loader', // 回滚
+                    use: [
+                        {
+                            loader: "css-loader"
+                        },
+                        {
+                            loader: "sass-loader"
+                        }
+                    ]
+                })
             }
 
         ]

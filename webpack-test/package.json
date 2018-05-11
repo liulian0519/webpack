@@ -18,6 +18,8 @@
     "html-withimg-loader": "^0.1.16",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.8.1",
