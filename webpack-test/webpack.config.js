@@ -2,29 +2,47 @@ const path = require('path')
 const Webpack = require('webpack')
 const uglify = require('uglifyjs-webpack-plugin')
 const htmlplugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+// 解决css背景图的路径问题
+var website = {
+    publicPath:" http://localhost:1717/"
+}
+
 module.exports = {
     entry:{
        entry: './src/index.js',
     } ,
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: website.publicPath
     },
     module: {
         rules: [
             {
                 test:/\.css$/,
-                use: ['style-loader','css-loader']
+                use:ExtractTextPlugin.extract({
+                    fallback:'style-loader', // 回滚
+                    use:'css-loader',
+                    // publicPath:'../' //解决css背景图的路径问题
+                })
             },
             {
                 test:/\.(png|jpg|gif)/,
                 use:[{
                     loader: "url-loader",
                     options: {
-                        limits:50000  // 表示小于50000的图片转为base64,大于50000的是路径
+                        limit:5000 ,// 表示小于50的图片转为base64,大于50000的是路径
+                        outputPath:'images/'   //打包后在imges文件加下
                     }
                 }]
+            },
+            {   //html中的图片
+                test:/\.(html|htm)$/i,
+                use:['html-withimg-loader']
             }
+
         ]
     },
     devServer:{
@@ -50,7 +68,8 @@ module.exports = {
             hash:true, //向html引入的src链接后面增加一段hash值,消除缓存
             template:'./src/index.html'
 
-        })
+        }),
+        new ExtractTextPlugin('css/index.css')
      //   new uglify()
     ]
 }
