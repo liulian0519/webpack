@@ -21,6 +21,7 @@ module.exports = {
     module: {
         rules: [
             {
+                //css
                 test:/\.css$/,
                 use:ExtractTextPlugin.extract({
                     fallback:'style-loader', // 回滚
@@ -29,6 +30,7 @@ module.exports = {
                 })
             },
             {
+                //图片
                 test:/\.(png|jpg|gif)/,
                 use:[{
                     loader: "url-loader",
@@ -41,6 +43,23 @@ module.exports = {
             {   //html中的图片
                 test:/\.(html|htm)$/i,
                 use:['html-withimg-loader']
+            },
+            {
+                //less
+                test:/\.less$/,
+                use:ExtractTextPlugin.extract({
+                    fallback:'style-loader', // 回滚
+                    use:[
+                        {
+                            loader:"css-loader"
+                        },
+                        {
+                            loader:"less-loader"
+                        }
+                    ]
+                    // publicPath:'../' //解决css背景图的路径问题
+                })
+
             }
 
         ]
