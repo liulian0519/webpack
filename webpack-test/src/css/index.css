@@ -2,3 +2,8 @@ body{
     background-color: red;
     color: #ffffff;
 }
+#img{
+    background-image: url("../images/ll.jpg");
+    width: 200px;
+    height: 200px;
+}

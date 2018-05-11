@@ -15,6 +15,15 @@ module.exports = {
             {
                 test:/\.css$/,
                 use: ['style-loader','css-loader']
+            },
+            {
+                test:/\.(png|jpg|gif)/,
+                use:[{
+                    loader: "url-loader",
+                    options: {
+                        limits:50000  // 表示小于50000的图片转为base64,大于50000的是路径
+                    }
+                }]
             }
         ]
     },
