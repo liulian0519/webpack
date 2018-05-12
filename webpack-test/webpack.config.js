@@ -25,7 +25,14 @@ module.exports = {
                 test:/\.css$/,
                 use:ExtractTextPlugin.extract({
                     fallback:'style-loader', // 回滚
-                    use:'css-loader',
+                    use:[
+                        {
+                            loader:'css-loader',
+                            options:{importLoaders:1},
+
+                        },
+                        'postcss-loader'
+                        ]
                     // publicPath:'../' //解决css背景图的路径问题
                 })
             },
