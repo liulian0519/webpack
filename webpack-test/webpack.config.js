@@ -1,8 +1,10 @@
 const path = require('path')
+// const glob = require('glob');
 const Webpack = require('webpack')
 const uglify = require('uglifyjs-webpack-plugin')
 const htmlplugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const purifycssPlugin = require('purifycss-webpack')
 
 // 解决css背景图的路径问题
 var website = {
@@ -110,7 +112,10 @@ module.exports = {
             template:'./src/index.html'
 
         }),
-        new ExtractTextPlugin('css/index.css')
+        new ExtractTextPlugin('css/index.css'),
+        // new purifycssPlugin({
+        //     paths:glob.sync(path.join(__dirname,'src/*.html'))
+        // })
      //   new uglify()
     ]
 }
