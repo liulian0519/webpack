@@ -4,7 +4,7 @@ const htmlplugin = require('html-webpack-plugin')
 const glob = require('glob')
 const purifyCssPlugin = require('purifycss-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+const entry = require('./webpack_config/entry_webpack')
 // 解决css背景图的路径问题
 var website = {
     publicPath:" http://localhost:1717/"
@@ -24,9 +24,7 @@ var website = {
 
 module.exports = {
     devtool:'',
-    entry:{
-        entry: './src/index.js',
-    } ,
+    entry:entry.path ,
     output: {
         filename: '[name].js',
          path: path.resolve(__dirname, 'dist'),
