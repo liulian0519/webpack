@@ -14,7 +14,11 @@ var website = {
 
 module.exports = {
     devtool:'',
-    entry:entry.path ,
+    entry:{
+        entry:'./src/index.js',
+        jquery:'jquery',
+        vue:'vue'
+    } ,
     output: {
         filename: '[name].js',
          path: path.resolve(__dirname, 'dist'),
@@ -62,7 +66,30 @@ module.exports = {
 
         ]
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons:{
+                    name:'jquery',
+                    chunks: "initial",
+                    filename:"assets/js/jquery.min.js",
+                    minChunks:2
+                },
+                b:{
+                    name:'vue',
+                    chunks: "initial",
+                    filename:"assets/js/vue.js",
+                    minChunks:2
+                }
+            }
+        }
+    },
     plugins: [
+        // new Webpack.optimize.CommonsChunkPlugin({
+        //     name:'jquery',
+        //     filename:"assets/js/jquery.min.js",
+        //     minChunks:2
+        // }),
         new Webpack.HotModuleReplacementPlugin(),
         new htmlplugin({
             minify:{
