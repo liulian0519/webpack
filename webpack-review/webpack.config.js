@@ -5,22 +5,12 @@ const glob = require('glob')
 const purifyCssPlugin = require('purifycss-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const entry = require('./webpack_config/entry_webpack')
+
 // 解决css背景图的路径问题
 var website = {
     publicPath:" http://localhost:1717/"
 }
 
-
-// console.log( encodeURIComponent(process.env.type) );
-// if(process.env.type== "build"){
-//     var website={
-//         publicPath:"http://192.168.0.104:1717/"
-//     }
-// }else{
-//     var website={
-//         publicPath:"http://cdn.liulian.com/"
-//     }
-// }
 
 module.exports = {
     devtool:'',
@@ -87,7 +77,10 @@ module.exports = {
             paths:glob.sync(path.join(__dirname,'src/*.html'))
         }),
 
-        new ExtractTextPlugin("css/index.css")
+        new ExtractTextPlugin("css/index.css"),
+        new Webpack.ProvidePlugin({
+            $:'jquery'
+        })
 
     ],
 //在原来基础上加下边这个就行
