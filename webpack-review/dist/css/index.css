@@ -1,0 +1,16 @@
+body{
+    background-color: red;
+    color: white;
+}
+#photo{
+    background-image: url(" http://localhost:1717/images/8f62abb8802ec65065e46380e1dd807e.jpg");
+    height: 400px;
+    width: 400px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.25);
+}
+.test{
+    color: #000;
+    width: 20px;
+}
