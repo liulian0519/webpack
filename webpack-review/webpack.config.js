@@ -10,7 +10,20 @@ var website = {
     publicPath:" http://localhost:1717/"
 }
 
+
+// console.log( encodeURIComponent(process.env.type) );
+// if(process.env.type== "build"){
+//     var website={
+//         publicPath:"http://192.168.0.104:1717/"
+//     }
+// }else{
+//     var website={
+//         publicPath:"http://cdn.liulian.com/"
+//     }
+// }
+
 module.exports = {
+    devtool:'',
     entry:{
         entry: './src/index.js',
     } ,
