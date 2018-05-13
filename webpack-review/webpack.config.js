@@ -5,6 +5,7 @@ const glob = require('glob')
 const purifyCssPlugin = require('purifycss-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const entry = require('./webpack_config/entry_webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // 解决css背景图的路径问题
 var website = {
@@ -108,7 +109,13 @@ module.exports = {
         new Webpack.ProvidePlugin({
             $:'jquery'
         }),
-        new Webpack.BannerPlugin('刘莲版权所有')
+        new Webpack.BannerPlugin('刘莲版权所有'),
+        new CopyWebpackPlugin([ //支持输入一个数组
+            {
+                from: path.resolve(__dirname, 'src/public'), //将src/public下的文件
+                to: './public' // 复制到dist目录下的pulic文件夹中
+            }
+        ])
 
     ],
 //在原来基础上加下边这个就行
