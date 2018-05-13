@@ -80,7 +80,8 @@ module.exports = {
         new ExtractTextPlugin("css/index.css"),
         new Webpack.ProvidePlugin({
             $:'jquery'
-        })
+        }),
+        new Webpack.BannerPlugin('刘莲版权所有')
 
     ],
 //在原来基础上加下边这个就行
@@ -94,6 +95,11 @@ module.exports = {
         open:true,
         hot:true,
     },
+    watchOptions: {
+        poll: 1000,
+        aggregateTimeout:500,
+        ignored:/node_modules/
+    }
 
 }
 
