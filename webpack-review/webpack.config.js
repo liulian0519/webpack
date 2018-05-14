@@ -91,6 +91,7 @@ module.exports = {
         //     filename:"assets/js/jquery.min.js",
         //     minChunks:2
         // }),
+        //热更新模块
         new Webpack.HotModuleReplacementPlugin(),
         new htmlplugin({
             minify:{
